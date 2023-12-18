@@ -1,4 +1,11 @@
-
+volumes:
+  postgres:
+    name: postgres
+  pgadmin:
+    name: pgadmin
+networks:
+  postgres:
+    driver: bridge
 services:
   postgres:
     container_name: postgres
@@ -8,7 +15,7 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - postgres:/data/postgres
+      - postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
@@ -28,9 +35,6 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-networks:
-  postgres:
-    driver: bridge
-volumes:
-  postgres:
-  pgadmin:
+
+
+

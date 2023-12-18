@@ -1,0 +1,6 @@
+com/WorkStride/fraud/FraudApplication.class
+com/WorkStride/fraud/FraudCheckHistoryRepository.class
+com/WorkStride/fraud/FraudServices.class
+com/WorkStride/fraud/FraudCheckHistory.class
+com/WorkStride/fraud/FraudCheckHistory$FraudCheckHistoryBuilder.class
+com/WorkStride/fraud/FraudController.class

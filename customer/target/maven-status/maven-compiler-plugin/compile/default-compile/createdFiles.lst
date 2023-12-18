@@ -1,0 +1,8 @@
+com/WorkStride/customer/CustomerApplication.class
+com/WorkStride/customer/CustomerController.class
+com/WorkStride/customer/CustomerService.class
+com/WorkStride/customer/ICustomerRepository.class
+com/WorkStride/customer/CustomerRegistrationRequest.class
+com/WorkStride/customer/CustomerConfig.class
+com/WorkStride/customer/Customer$CustomerBuilder.class
+com/WorkStride/customer/Customer.class

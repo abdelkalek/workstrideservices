@@ -1,4 +1,6 @@
 package com.WorkStride.customer;
+import com.WorkStride.clients.fraud.FraudCheckReponse;
+import com.WorkStride.clients.fraud.FraudClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -8,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class CustomerService {
     private final ICustomerRepository customerRepository;
     private final RestTemplate restTemplate;
+    private final FraudClient fraudClient;
     public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
         Customer customer = Customer.builder()
                 .firstName(customerRegistrationRequest.fisrtName())
@@ -19,9 +22,8 @@ public class CustomerService {
         //to do : store  customer in db
         // to do : check if Fraudster
         customerRepository.saveAndFlush(customer);
-        FraudCheckReponse fraudCheckReponse = restTemplate.getForObject(
-                "http://localhost:8081/api/v1/fraud-check/{customerId}", FraudCheckReponse.class, customer.getId()
-        );
+        FraudCheckReponse fraudCheckReponse =
+                  fraudClient.isFraudster(customer.getId());
         if(fraudCheckReponse.isFraudCheck()) {
             throw new IllegalStateException("fraudster");
         }
